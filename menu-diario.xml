@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<menu_diario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="actividad2-2.xsd"><!-- enlazar con hoja xml schema (XSD)-->
+	<menu id="01" tipo="mediodia" precio="" numero_comensales="">
+		<primeros>
+			<primero plato_p="fidegua" />
+			<primero plato_p=" arroz con verduras" />
+		</primeros>
+		<segundos>
+			<segundo plato_s="solomillo de ternera"/>
+			<segundo plato_s="tortilla patatas"/>
+		</segundos>
+		<postres>
+			<postre plato_p="natillas" />
+			<postre plato_p="arroz con leche" />
+		</postres>
+	</menu>
+	<menu id="02" tipo="cena" precio="" numero_comensales="">
+		<primeros>
+			<primero plato_p="sopa de verdura" />
+			<primero plato_p=" crema de ave" />
+		</primeros>
+		<segundos>
+			<segundo plato_s="merluza a la plancha"></segundo>
+			<segundo plato_s="tortilla calabacín" />
+		</segundos>
+		<postres>
+			<postre plato_p="flan cafe" />
+			<postre plato_p="dulce leche" />
+		</postres>
+	</menu>
+</menu_diario>

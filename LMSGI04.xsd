@@ -1,0 +1,150 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> <!--1.2 están declarados todos los elementos y todos los atributos-->
+    <xs:element name="modulo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="unidades"><!--1.6-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="unidad" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType  mixed="true"><!--1.10-->
+                                                <xs:sequence>
+                                                    <xs:element  name="opciones" > <!--1.10-->
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="opcion" maxOccurs="unbounded"> <!--1.10-->
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="rotulo">
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:string">
+                                                                                    <xs:enumeration value="a"></xs:enumeration>
+                                                                                    <xs:enumeration value="b"></xs:enumeration>
+                                                                                    <xs:enumeration value="c"></xs:enumeration>
+                                                                                    <xs:enumeration value="d"></xs:enumeration>
+
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="descripcion">
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:string">
+                                                                                    <xs:maxLength value="200"></xs:maxLength> <!--2.6-->
+
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="correcta" use="optional">
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:string">
+                                                                                    <xs:enumeration value="true"></xs:enumeration> <!--1.11-->
+
+                                                                                </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>  <!--1.3-->                                                                       
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="id" type="xs:ID"></xs:attribute> <!--1.4--> 
+                                                <xs:attribute name="orden">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:integer">
+                                                            <xs:minInclusive value="1"></xs:minInclusive>
+                                                            <xs:maxInclusive value="999"></xs:maxInclusive> <!--2.3-->
+
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID"></xs:attribute><!--1.4-->
+                                    <xs:attribute name="nombre"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>                            
+                        </xs:sequence>                        
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="prueba" minOccurs="0" maxOccurs="unbounded"><!--1.6-->
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="parte" maxOccurs="unbounded"><!--1.7-->
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ejercicio" maxOccurs="unbounded"> <!--1.7-->
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                   <xs:element name="enunciado" type="xs:string"></xs:element> <!--1.8-->
+                                                   <xs:element name="items" minOccurs="0"><!--1.8-->
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element name="item" maxOccurs="unbounded"><!--1.8-->
+                                                                <xs:complexType>
+                                                                    <xs:attribute name="descripcion"></xs:attribute>
+                                                                    <xs:attribute name="peso" use="optional"></xs:attribute>  <!--1.3--> 
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                   </xs:element>
+                                                   <xs:element name="anexos" minOccurs="0" > <!--1.9-->
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="anexo" maxOccurs="unbounded"> <!--1.9-->
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="src"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                   </xs:element> <!--1.9--> 
+                                                </xs:sequence>
+                                                <xs:attribute name="id" >
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:ID">
+                                                            <xs:pattern value="P[1-9]{1}E\d{1,2}"></xs:pattern> <!--2.5-->
+
+                                                        </xs:restriction>
+
+                                                    </xs:simpleType>
+                                                </xs:attribute> <!--1.4-->
+                                                <xs:attribute name="puntos">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:decimal">
+                                                            <xs:totalDigits value="5"></xs:totalDigits>
+                                                            <xs:fractionDigits value="3"></xs:fractionDigits> <!--2.4-->
+                                                            <xs:minInclusive value="0"></xs:minInclusive>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="unidad" type="xs:IDREF"></xs:attribute><!--1.5-->
+                                            </xs:complexType>
+                                        </xs:element>
+                                        
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID"></xs:attribute> <!--1.3-->
+                                    <xs:attribute name="titulo"></xs:attribute>
+                                    <xs:attribute name="tarea" use="optional"></xs:attribute> <!--1.3--> 
+                                    <xs:attribute name="puntos_totales"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:ID"></xs:attribute><!--1.4-->
+                        <xs:attribute name="titulo"></xs:attribute>
+                        <xs:attribute name="fecha" type="xs:date"></xs:attribute>  <!--2.2-->
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+
+            <xs:attribute name="id" type="xs:ID"></xs:attribute><!--1.4-->
+            <xs:attribute name="titulo"></xs:attribute>
+
+        </xs:complexType>
+        
+    </xs:element>
+</xs:schema>

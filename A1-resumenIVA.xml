@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resumenIVA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="prueba.xsd">
+    <presentacion fecha="2016-01-20">
+        <periodo desde="2015-10-01" hasta="2015-12-31" />
+        <presentador cif="B12345678" razon="Empre,S.A." />
+        <liquidacion importe="750.00" iban="ES1812345678901234567890" cargo="2016-01-30" />
+        <observaciones></observaciones>
+
+        <soportado total="2400.00">
+            <iva porcentaje="21.00" base="1000.00" cuota="2000.00" />
+            <iva porcentaje="10.00" base="3000.00" cuota="300.00" />
+        </soportado>
+        <repercutido total="2400.00" />
+        <iva porcentaje="21.00" base="1500.00" cuota="31500.00" />
+    </presentacion>
+</resumenIVA>

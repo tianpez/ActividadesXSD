@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">     
+    <xs:element name="menu_diario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="menu" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="primeros">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="primero" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="plato_p" type="xs:string" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="segundos">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="segundo" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="plato_s" type="xs:string" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="postres">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="postre" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="plato_p" type="xs:string" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                        <xs:attribute name="tipo" type="xs:string" use="required"/>
+                        <xs:attribute name="precio" type="xs:string" use="required"/>
+                        <xs:attribute name="numero_comensales" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+   
+    </xs:element>
+</xs:schema>

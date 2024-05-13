@@ -1,0 +1,115 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="almacen">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- .............................Productos....................................... -->
+                <xs:element name="productos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="producto" maxOccurs="unbounded">
+                                <xs:complexType>
+
+                                    <xs:attribute name="id" use="required"></xs:attribute>
+                                    <xs:attribute name="descripcion" use="required"></xs:attribute>
+                                    <xs:attribute name="valor_ud" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:decimal">
+                                                <xs:totalDigits value="10"></xs:totalDigits>
+                                                <xs:fractionDigits value="2"></xs:fractionDigits>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="unidades" use="required"></xs:attribute>
+
+                                </xs:complexType>
+
+                            </xs:element>
+                        </xs:sequence>
+
+
+                    </xs:complexType>
+
+                </xs:element>
+                 <!-- .............................Ubicaciones....................................... -->
+                <xs:element name="ubicaciones">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nave" maxOccurs="unbounded">
+                                <xs:complexType mixed="true" >
+                                    
+                                    <xs:sequence>
+                                        <xs:element name="sector" maxOccurs="unbounded">
+                                            <xs:complexType mixed="true">
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <!-- Atributo id -->
+                                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                                    <!-- Atributo estado -->
+                                                    <xs:attribute name="estado" use="required">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="D"></xs:enumeration>
+                                                                <xs:enumeration value="N"></xs:enumeration>
+                                                                <xs:enumeration value="C"></xs:enumeration>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:attribute> 
+                                                    <!-- Atributo capacidad -->
+                                                    <xs:attribute name="capacidad" type="xs:integer"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                        </xs:element>
+                                       
+
+                                        
+                                    </xs:sequence>
+                                    <xs:attribute name="id" use="required"></xs:attribute>
+                                </xs:complexType>
+                              
+
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+
+                </xs:element>
+                <!-- .............................Palets....................................... -->
+                <xs:element name="palets">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="palet" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="contenido" minOccurs="1" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="producto" use="required"></xs:attribute>
+                                                <xs:attribute name="cantidad" use="required"></xs:attribute>
+                                            </xs:complexType>
+
+                                        </xs:element>
+
+                                        <xs:element name="observaciones" minOccurs="0" type="xs:string"></xs:element>
+
+                                    </xs:sequence>
+                                    <xs:attribute name="id" use="required">
+
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:ID">
+                                            <xs:pattern value="PL[0-9]{6}"></xs:pattern>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="ubicacion" use="optional" type="xs:IDREF"></xs:attribute>
+                                    <xs:attribute name="verificado" use="optional" type="xs:dateTime"></xs:attribute>
+                                </xs:complexType>
+
+
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
